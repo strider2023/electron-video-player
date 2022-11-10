@@ -7,7 +7,16 @@
  */
 
 const quitButton = document.getElementById('quit-btn');
+const btn = document.getElementById('browse-video');
+const videoPlayerElement = document.getElementById('videoPlayer');
 
 quitButton.addEventListener('click', () => {
     window.electronAPI.closeApplication();
 });
+
+btn.addEventListener('click', async () => {
+    const filePath = await window.electronAPI.openFile()
+    // filePathElement.innerText = filePath
+    videoPlayerElement.src = filePath;
+    videoPlayerElement.style.display = "block";
+})
