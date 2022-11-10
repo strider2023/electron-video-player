@@ -7,14 +7,13 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
-    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   ipcMain.on('cloase-app', (event) => {
-    if (process.platform !== 'darwin') app.quit()
+    app.quit()
   })
 
   // and load the index.html of the app.
